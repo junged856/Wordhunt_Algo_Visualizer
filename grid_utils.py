@@ -28,6 +28,8 @@ def generate_grid(grid):
             
         G.add_edges(i, end_nodes)
     
+    G.set_dimensions((n, n))
+    
     return G
         
 def draw_grid(n, G):
