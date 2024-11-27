@@ -45,7 +45,7 @@ def wordSearch(start_index, G, dictionary, prefix="", visited=[], words=[]):
 
     return words
 
-# adding ability to see algorithm visually using frames 
+# adding ability to see algorithm visually by using frames 
 
 def wordSearch2(start_index, G, dictionary, frames=[], prefix="", visited=[], words=[]):
     start = G.get_node_val(start_index)
@@ -73,9 +73,6 @@ def wordSearch2(start_index, G, dictionary, frames=[], prefix="", visited=[], wo
             frames.append((visited2, prefix + letter, words.copy())) # each item contains all info needed to render a single frame
     return frames 
 
-def updateFrames(deadend, frames, idx):  
-    return
-
 G = generate_grid([
     ["w", "o", "r", "d"], 
     ["b", "a", "n", "k"], 
@@ -89,6 +86,6 @@ lines = f.readlines()
 for line in lines:
     word = line.strip()
     dictionary.insert(word)
-    
+
 frames = wordSearch2(0, G, dictionary)
 print(frames)
