@@ -1,6 +1,7 @@
 from structs import Graph
 
 def generate_grid(letters, n):
+    letters = letters.upper()
     G = Graph()
     if len(letters) != (n*n):
         return None

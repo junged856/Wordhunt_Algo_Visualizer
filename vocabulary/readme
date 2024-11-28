@@ -1,2 +1,4 @@
-All words are taken from the dictionary used by all Linux computers, which can be found at /usr/share/dict/words.
+All words in linuxwords.txt taken from the dictionary used by all Linux computers, which can be found at /usr/share/dict/words.
 An online source was used to obtain a copy of this file: https://users.cs.duke.edu/~ola/ap/linuxwords.
+
+collins_scrabble_words_2019.txt is the official word list used by Scrabble. See https://scrabble.collinsdictionary.com/word-lists/

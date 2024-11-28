@@ -60,11 +60,11 @@ draw_grid(4, G)
 
 dictionary = Trie()
 
-f = open('vocabulary/wordbank.txt', 'r')
+f = open('vocabulary/scrabble_wordbank_2019.txt', 'r')
 lines = f.readlines()
 for line in lines:
     word = line.strip()
     dictionary.insert(word)
 
-frames = wordSearch(1, G, dictionary)
+frames = wordSearch(0, G, dictionary)
 print(frames)

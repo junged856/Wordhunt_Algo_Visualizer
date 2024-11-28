@@ -67,7 +67,7 @@ class Trie:
     def insert(self, word: str) -> None:
         current = self.root 
         for letter in word:
-            index = ord(letter) - ord('a')
+            index = ord(letter) - ord('A')
             if not current.children[index]:
                 current.children[index] = TrieNode()
             current = current.children[index]
@@ -76,7 +76,7 @@ class Trie:
     def search(self, word: str) -> bool:
         current = self.root 
         for letter in word:
-            index = ord(letter) - ord('a')
+            index = ord(letter) - ord('A')
             if not current.children[index]:
                 return False 
             current = current.children[index]
@@ -86,7 +86,7 @@ class Trie:
     def is_prefix(self, prefix: str) -> bool:
         current = self.root 
         for letter in prefix:
-            index = ord(letter) - ord('a')
+            index = ord(letter) - ord('A')
             if not current.children[index]:
                 return False
             current = current.children[index]
