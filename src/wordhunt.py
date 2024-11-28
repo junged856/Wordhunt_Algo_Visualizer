@@ -4,11 +4,14 @@ from grid_utils import *
 
 # iteratively builds solution using dfs approach (finds all words starting with start_index)
 
-def wordSearch(start_index, G, dictionary, prefix="", visited=[], words=[]):
+def wordSearch(start_index, G, dictionary, words, prefix="", visited=None):
+    if visited==None:
+        visited = []
+    
     start = G.get_node_val(start_index)
     prefix += start
     visited.append(start_index)
-        
+    
     if dictionary.search(prefix) and not prefix in words:
         words.append(prefix)
         
@@ -20,9 +23,12 @@ def wordSearch(start_index, G, dictionary, prefix="", visited=[], words=[]):
 
     return words
 
-# adding ability to see algorithm visually by using frames 
+# supports the ability to see algorithm visually by using frames 
 
-def wordSearch2(start_index, G, dictionary, frames=[], prefix="", visited=[], words=[]):
+def wordSearch2(start_index, G, dictionary, words, frames, prefix="", visited=None):
+    if visited==None:
+        visited = []
+    
     start = G.get_node_val(start_index)
     prefix += start
     visited.append(start_index)
@@ -39,7 +45,7 @@ def wordSearch2(start_index, G, dictionary, frames=[], prefix="", visited=[], wo
                        dictionary=dictionary, 
                        frames=frames, 
                        prefix=prefix, 
-                       visited=visited.copy(), 
+                       visited=visited.copy(),
                        words=words)
         else:
             # once a dead-end is hit, copy the path, words found, and letters traversed (single frame)
@@ -48,23 +54,37 @@ def wordSearch2(start_index, G, dictionary, frames=[], prefix="", visited=[], wo
             frames.append((visited2, prefix + letter, words.copy())) # each item contains all info needed to render a single frame
     return frames 
 
-G = generate_grid("ndubiehlaaoeihsw", 4)
+# just gets words
+def solveBoard(n, G, dictionary, words):
+    for i in range(n * n):
+        wordSearch(i, G, dictionary, words)
 
+def createDictionary(filepath, dictionary):
+    f = open(filepath, 'r')
+    lines = f.readlines()
+    for line in lines:
+        word = line.strip()
+        dictionary.insert(word)
+    return dictionary
+
+G = generate_grid("mdacofhraueumnne", 4)
+dictionary = createDictionary('vocabulary/scrabble_wordbank_2019.txt', Trie())
+
+# visualize the board
 draw_grid(4, G)
 
     # this is what the grid should look like:
-    # ["n", "d", "u", "b"], 
-    # ["i", "e", "h", "l"], 
-    # ["a", "a", "o", "e"], 
-    # ["i", "h", "s", "w"]]
-
-dictionary = Trie()
-
-f = open('vocabulary/scrabble_wordbank_2019.txt', 'r')
-lines = f.readlines()
-for line in lines:
-    word = line.strip()
-    dictionary.insert(word)
-
-frames = wordSearch(0, G, dictionary)
-print(frames)
+    # ["l", "e", "e", "a"], 
+    # ["h", "y", "w", "a"], 
+    # ["r", "s", "c", "r"], 
+    # ["p", "k", "c", "h"]]
+    
+words = []
+# print(wordSearch(0, G, dictionary, words))
+# print(wordSearch(1, G, dictionary, words))
+solveBoard(4, G, dictionary, words)
+print(words)
+print()
+print("sorted by length:")
+print(sorted(words, key=len))
+print()
