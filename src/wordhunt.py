@@ -2,31 +2,6 @@ from structs import Graph
 from structs import Trie
 from grid_utils import *
 
-def main():
-    G = Graph()
-    dictionary = Trie()
-
-def renderBoard():
-    # draws board
-    
-    pass
-    
-def animateArrows():
-    # draws the arrows
-    pass
-
-def animateWordsFound():
-    # draws the arrows
-    pass
-
-def clearBoard():
-    # clears the board of all arrows
-    pass
-    
-def eraseArrow():
-    # used in draw board
-    pass
-
 # iteratively builds solution using dfs approach (finds all words starting with start_index)
 
 def wordSearch(start_index, G, dictionary, prefix="", visited=[], words=[]):
