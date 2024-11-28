@@ -73,11 +73,15 @@ def wordSearch2(start_index, G, dictionary, frames=[], prefix="", visited=[], wo
             frames.append((visited2, prefix + letter, words.copy())) # each item contains all info needed to render a single frame
     return frames 
 
-G = generate_grid([
-    ["n", "d", "u", "b"], 
-    ["i", "e", "h", "l"], 
-    ["a", "a", "o", "e"], 
-    ["i", "h", "s", "w"]])
+G = generate_grid("ndubiehlaaoeihsw", 4)
+
+draw_grid(4, G)
+
+    # this is what the grid should look like:
+    # ["n", "d", "u", "b"], 
+    # ["i", "e", "h", "l"], 
+    # ["a", "a", "o", "e"], 
+    # ["i", "h", "s", "w"]]
 
 dictionary = Trie()
 
@@ -87,5 +91,5 @@ for line in lines:
     word = line.strip()
     dictionary.insert(word)
 
-frames = wordSearch(0, G, dictionary)
+frames = wordSearch(1, G, dictionary)
 print(frames)

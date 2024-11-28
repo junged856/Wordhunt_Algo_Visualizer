@@ -1,16 +1,14 @@
 from structs import Graph
-from structs import Trie
 
-def generate_grid(grid):
+def generate_grid(letters, n):
     G = Graph()
-    n = len(grid)
+    if len(letters) != (n*n):
+        return None
     
     # make nodes
     for i in range(n * n):
-        row = i // n
-        col = i % n
-        G.add_node(i, grid[row][col])
-            
+        G.add_node(i, letters[i])
+    
     # create all edges
     for i in range(n * n):
         end_nodes = []
@@ -34,7 +32,6 @@ def generate_grid(grid):
         
 def draw_grid(n, G):
     for i in range(n * n):
-        row = i // n
         col = i % n
         node_val = G.get_node_val(i)
         print(node_val + " ", end='')
