@@ -1,5 +1,5 @@
-from Graph import Graph
-from Trie import Trie
+from structs import Graph
+from structs import Trie
 from grid_utils import *
 
 def main():
@@ -74,18 +74,18 @@ def wordSearch2(start_index, G, dictionary, frames=[], prefix="", visited=[], wo
     return frames 
 
 G = generate_grid([
-    ["w", "o", "r", "d"], 
-    ["b", "a", "n", "k"], 
-    ["s", "a", "m", "p"], 
-    ["l", "e", "a", "a"]])
+    ["n", "d", "u", "b"], 
+    ["i", "e", "h", "l"], 
+    ["a", "a", "o", "e"], 
+    ["i", "h", "s", "w"]])
 
 dictionary = Trie()
 
-f = open('wordbank.txt', 'r')
+f = open('vocabulary/wordbank.txt', 'r')
 lines = f.readlines()
 for line in lines:
     word = line.strip()
     dictionary.insert(word)
 
-frames = wordSearch2(0, G, dictionary)
+frames = wordSearch(0, G, dictionary)
 print(frames)

@@ -1,5 +1,5 @@
-from Graph import Graph
-from Trie import Trie
+from structs import Graph
+from structs import Trie
 
 def generate_grid(grid):
     G = Graph()

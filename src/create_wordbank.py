@@ -1,7 +1,7 @@
 # this file is used to filter words from linux dictionary to only include lowercase and non-hyphenated words
 
-f = open('linuxwords.txt')
-f2 = open('wordbank.txt', "x")
+f = open('vocabulary/linuxwords.txt')
+f2 = open('vocabulary/wordbank.txt', "x")
 
 words = f.readlines()
 
