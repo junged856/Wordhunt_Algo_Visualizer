@@ -48,16 +48,23 @@ def wordSearch2(start_index, G, dictionary, words, frames, prefix="", visited=No
                        visited=visited.copy(),
                        words=words)
         else:
-            # once a dead-end is hit, copy the path, words found, and letters traversed (single frame)
-            visited2 = visited.copy()
-            visited2.append(n)
-            frames.append((visited2, prefix + letter, words.copy())) # each item contains all info needed to render a single frame
+            # only add meaningful frames
+            if not n in visited:
+                visited2 = visited.copy()
+                visited2.append(n)
+                frames.append((visited2, prefix + letter, words.copy())) 
+                
     return frames 
 
 # just gets words
 def solveBoard(n, G, dictionary, words):
     for i in range(n * n):
         wordSearch(i, G, dictionary, words)
+        
+# gets words + frames
+def solveBoard2(n, G, dictionary, words, frames):
+    for i in range(n * n):
+        wordSearch2(i, G, dictionary, words, frames)
 
 def createDictionary(filepath, dictionary):
     f = open(filepath, 'r')
@@ -80,9 +87,11 @@ draw_grid(4, G)
     # ["p", "k", "c", "h"]]
     
 words = []
+frames = []
 # print(wordSearch(0, G, dictionary, words))
 # print(wordSearch(1, G, dictionary, words))
-solveBoard(4, G, dictionary, words)
+# solveBoard(4, G, dictionary, words)
+wordSearch2(0, G, dictionary, words, frames)
 print(words)
 print()
 print("sorted by length:")
