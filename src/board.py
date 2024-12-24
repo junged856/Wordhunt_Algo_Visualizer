@@ -1,6 +1,6 @@
 from structs import Graph
 
-def generate_grid(letters, n):
+def create_board(letters, n):
     letters = letters.upper()
     G = Graph()
     if len(letters) != (n*n):
@@ -31,7 +31,7 @@ def generate_grid(letters, n):
     
     return G
         
-def draw_grid(n, G):
+def print_board(n, G):
     for i in range(n * n):
         col = i % n
         node_val = G.get_node_val(i)
