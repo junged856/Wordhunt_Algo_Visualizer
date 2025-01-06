@@ -1,6 +1,7 @@
 from structs import Graph
 from structs import Trie
-from src.board import *
+from board import *
+from visualizer import *
 import numpy as np
 import cv2
 
@@ -90,31 +91,15 @@ print("sorted by length:")
 print(sorted(words, key=len))
 print()
 
-def create_frames():
-    return
+# visualizer params
+img_dims = 512
+lett_per_row = 4
+font_face = cv2.FONT_HERSHEY_SIMPLEX
+thickness = 2
+font_scale = 2
+# frames_data = [[0, 1, 4, 9], [1, 2, 5, 9]] # JUST FOR TESTING
 
-def draw_letters(letters):
-    img_dims = 512
-    padding = 20 
-    lett_per_row = 4
-    font_face = cv2.FONT_HERSHEY_SIMPLEX
-    thickness = 2
-    font_scale = 2
-
-    img = np.zeros((img_dims, img_dims, 3), np.uint8)
-        
-    for i, c in enumerate(letters):
-        row, col = i // lett_per_row, i % lett_per_row
-        lett_dims = cv2.getTextSize(c, font_face, font_scale, thickness)[0]
-        cell_dims = img_dims // lett_per_row
-        x = col*(cell_dims) + (cell_dims // 2) - (lett_dims[0] // 2)
-        y = row*(cell_dims) + (cell_dims // 2) + (lett_dims[1] // 2)
-        cv2.putText(img, letters[i], (x, y), font_face, font_scale, (255, 255, 255), thickness, cv2.LINE_AA)
-    
-    return img
-
-def draw_frame(img, arrow_path):
-    
-    return
-
-draw_letters(board_letters)
+board_img = draw_board(board_letters, img_dims, lett_per_row, font_face, thickness, font_scale) # just a drawing of the board, no arrows
+solveBoard2(4, G, dictionary, words, frames)
+rendered_frames = draw_frames(frames, img_dims, lett_per_row, thickness, board_img)
+create_mp4(rendered_frames, img_dims)
