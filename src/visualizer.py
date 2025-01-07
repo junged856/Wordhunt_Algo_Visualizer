@@ -8,7 +8,7 @@ def create_frames():
 # generates an image
 def draw_board(letters, img_dims, lett_per_row, font_face, thickness, font_scale):
     img = np.zeros((img_dims, img_dims, 3), np.uint8)
-        
+    
     for i, c in enumerate(letters):
         row, col = i // lett_per_row, i % lett_per_row
         lett_dims = cv2.getTextSize(c, font_face, font_scale, thickness)[0]
@@ -19,11 +19,24 @@ def draw_board(letters, img_dims, lett_per_row, font_face, thickness, font_scale
     return img
 
 # augments an image
-def draw_frame(frame, img_dims, lett_per_row, thickness, board_img):
-    # preserve the original img
-    board_copy = copy.deepcopy(board_img)
+def draw_frame(frame, img_dims, lett_per_row, thickness, board_img, font, font_scale):
+    board_copy = copy.deepcopy(board_img) # preserve the original img
+    path_selected = frame[0]
+    word_selected = frame[1]
+    words_found_so_far = frame[2]
+    img = None
+    
+    # draws arrows
+    img = draw_arrows(frame, img_dims, lett_per_row, thickness, path_selected, board_copy)
+    
+    # draws word selected
+    draw_word(thickness, font, font_scale, img, word_selected)
+
+    return img
+
+def draw_arrows(frame, img_dims, lett_per_row, thickness, path_selected, board_copy):
     for i in range(len(frame[0]) - 1):
-        let_idx = frame[0][i]
+        let_idx = path_selected[i]
         # print(let_idx)
         row, col = let_idx // lett_per_row, let_idx % lett_per_row
         cell_dims = img_dims // lett_per_row
@@ -34,16 +47,24 @@ def draw_frame(frame, img_dims, lett_per_row, thickness, board_img):
         row, col = let_idx // lett_per_row, let_idx % lett_per_row
         x2 = col*(cell_dims) + (cell_dims // 2)
         y2 = row*(cell_dims) + (cell_dims // 2)
+
+        cv2.arrowedLine(board_copy, (x1, y1), (x2, y2), (0, 255, 0), thickness)
+        
+    return board_copy
+
+def draw_word(thickness, font, font_scale, img, word_selected):
+    textsize = cv2.getTextSize(word_selected, font, font_scale, thickness)[0]
+    textX = (img.shape[1] - textsize[0]) // 2
+    textY = (img.shape[0] + textsize[1]) // 2
+
+    # add text centered on image
+    cv2.putText(img, word_selected, (textX, textY ), font, font_scale, (255, 255, 255), 2)
     
-        img = cv2.arrowedLine(board_copy, (x1, y1), (x2, y2), (0, 255, 0), thickness)
-
-    return img
-
 # returns list of imgs
-def draw_frames(frames, img_dims, lett_per_row, thickness, board_img):
+def draw_frames(frames, img_dims, lett_per_row, thickness, board_img, font, font_scale):
     rendered_frames = []
     for frame in frames:
-        frame_img = draw_frame(frame, img_dims, lett_per_row, thickness, board_img)
+        frame_img = draw_frame(frame, img_dims, lett_per_row, thickness, board_img, font, font_scale)
         cv2.imshow('frame', frame_img)
         cv2.waitKey(75)
         rendered_frames.append(frame_img)

@@ -101,5 +101,5 @@ font_scale = 2
 
 board_img = draw_board(board_letters, img_dims, lett_per_row, font_face, thickness, font_scale) # just a drawing of the board, no arrows
 solveBoard2(4, G, dictionary, words, frames)
-rendered_frames = draw_frames(frames, img_dims, lett_per_row, thickness, board_img)
+rendered_frames = draw_frames(frames, img_dims, lett_per_row, thickness, board_img, font_face, font_scale)
 create_mp4(rendered_frames, img_dims)
