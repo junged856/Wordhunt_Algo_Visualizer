@@ -6,7 +6,10 @@ Built with Python, OpenCV Image Processing tools
 
 # Sneak Peek:
 
-![output-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/48c80030-a80b-42df-96eb-6f55d9f3d511)
+<p align="center">
+  <img src="/github_animation.gif" width="300" height="300"/>
+  <img src="https://i.sstatic.net/JsxLT.jpg" width="300" height="300">
+</p>
 
 # Online References I Found Useful:
 
