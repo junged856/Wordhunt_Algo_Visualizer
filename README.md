@@ -7,8 +7,8 @@ Built with Python, OpenCV Image Processing tools
 # Sneak Peek:
 
 <p align="center">
-  <img src="/github_animation.gif" width="300" height="300"/>
-  <img src="https://i.sstatic.net/JsxLT.jpg" width="300" height="300">
+  <img src="/github_animation.gif" width="400" height="400"/>
+  <img src="https://i.sstatic.net/JsxLT.jpg" width="400" height="400">
 </p>
 
 # Online References I Found Useful:
