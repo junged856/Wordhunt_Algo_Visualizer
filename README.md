@@ -1,6 +1,6 @@
 # wordhunt_algo_visualizer
 
-Visualization of a graphing algorithm that searches for words in a nxn grid of randomized letters 
+Animated a graphing algorithm that searches for words in a nxn grid of randomized letters 
 
 Modified a DFS algorithm to efficiently search for words within a graph of letters.
 
