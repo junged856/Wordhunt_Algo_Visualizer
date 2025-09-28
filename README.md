@@ -2,7 +2,9 @@
 
 Visualization of a graphing algorithm that searches for words in a nxn grid of randomized letters 
 
-Used a Trie data structure to efficiently check for words in the Scrabble dictionary. Modified a DFS algorithm to search for words within a graph data structure.
+Modified a DFS algorithm to efficiently search for words within a graph of letters.
+
+Used a Trie to efficiently check for word validity. 
 
 Built with Python, OpenCV Image Processing tools
 
