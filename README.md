@@ -10,6 +10,8 @@ Built with Python, OpenCV Image Processing tools
 
 # Sneak Peek:
 
+***(Animation speed does not reflect algorithm speed)***
+
 <p align="center">
   <img src="/github_animation.gif" width="350" height="350"/>
   <img src="https://i.sstatic.net/JsxLT.jpg" width="350" height="350">
