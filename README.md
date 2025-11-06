@@ -10,7 +10,7 @@ Built with Python, OpenCV Image Processing tools
 
 # Sneak Peek:
 
-***(Animation speed does not reflect algorithm speed)***
+(***Note:*** Animation speed does not reflect algorithm speed, user can input any 4x4 grid for visualization in the form of a 16 letter string)
 
 <p align="center">
   <img src="/github_animation.gif" width="350" height="350"/>
